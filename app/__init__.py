@@ -10,4 +10,5 @@ def create_app():
 
 def register_blueprint(app):
     from app.web.book import web
+    from app.web.user import web
     app.register_blueprint(web)
