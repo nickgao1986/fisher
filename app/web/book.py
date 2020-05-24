@@ -1,4 +1,4 @@
-from flask import Flask, make_response, jsonify, Blueprint
+from flask import Flask, make_response, jsonify, Blueprint, request
 
 from yushu_book import YuShuBook
 from . import web
@@ -6,6 +6,9 @@ from . import web
 
 @web.route('/hello')
 def hello():
+    q = request.args['q']
+    page = request.args['page']
+    print("<<<q="+q+"page="+page)
     headers = {
         'content-type': 'text/plain'
     }
