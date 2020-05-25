@@ -16,12 +16,14 @@ def hello():
         q = form.q.data.strip()
         page = form.page.data
         print("q="+q)
-    headers = {
-        'content-type': 'text/plain'
-    }
-    response = make_response('<html></html>', 404)
-    response.headers = headers
-    q = '9787501524044'
-    result = YuShuBook.search_by_isbn(q)
-    # return json.dumps(result), 200, {'content-type': 'application/json'}
-    return jsonify(result)
+        headers = {
+            'content-type': 'text/plain'
+        }
+        response = make_response('<html></html>', 404)
+        response.headers = headers
+        q = '9787501524044'
+        result = YuShuBook.search_by_isbn(q)
+        # return json.dumps(result), 200, {'content-type': 'application/json'}
+        return jsonify(result)
+    else:
+        return jsonify(form.errors)
