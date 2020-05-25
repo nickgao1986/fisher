@@ -4,11 +4,18 @@ from yushu_book import YuShuBook
 from . import web
 
 
+# from app.form.book import SearchForm
+from ..form.book import SearchForm
+
+
 @web.route('/hello')
 def hello():
-    q = request.args['q']
-    page = request.args['page']
-    print("<<<q="+q+"page="+page)
+    form = SearchForm(request.args)
+    print("isvalidate="+"aa" if form.validate() else "bb")
+    if form.validate():
+        q = form.q.data.strip()
+        page = form.page.data
+        print("q="+q)
     headers = {
         'content-type': 'text/plain'
     }
